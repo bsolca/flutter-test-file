@@ -1,0 +1,1 @@
+powershell.exe -ExecutionPolicy Bypass flutter_test_file.ps1 %*
