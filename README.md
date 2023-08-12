@@ -6,7 +6,11 @@ FTF helps you to create and manage test files in Flutter projects, making sure t
 
 - **Effortless Test File Creation**: FTF makes it easy to create test files by placing them in the appropriate directory within the test folder.
 - **Intelligent Handling**: If a test file with the same name already exists, FTF will prompt you to confirm the move to the correct location, ensuring organization and preventing overwriting.
+- **Recursive empty directory removal**: FTF will remove empty directories recursively, ensuring that your project's test folder is clean and organized.
 - **Version Control Support**: FTF seamlessly integrates with popular version control systems like SVN, GIT, or simply move it with Powershell, ensuring that file moves preserve your project's history.
+
+<img src="assets/create_test_files.gif" height="500"/>
+<img src="assets/move_file.gif" height="500"/>
 
 # Installation
 
