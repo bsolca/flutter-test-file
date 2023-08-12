@@ -177,8 +177,8 @@ function Read-ToMove($testFiles, $testFilePath) {
         ExitPrompted
     }
 
-    Write-Host "Test file already exists at the wrong place at`n$testFileExisting"
-    Write-Host "Test file should be at`n$testFilePath"
+    Write-Host "Current location: $testFileExisting"
+    Write-Host "Correct location: $testFilePath"
 
     Read-ToMoveTestFile $testFileExisting $testFilePath
     ExitPrompted
@@ -186,7 +186,7 @@ function Read-ToMove($testFiles, $testFilePath) {
 
 function Main() {
     $currentPath = Get-Location
-    Write-Host "Flutter Test File (tft)`nCurrent path: $currentPath`n"
+    Write-Host "Flutter Test File (tft)"
 
     $fileName = Get-Filename
     $fileNamePath = Get-ValidFilePath $currentPath $fileName
