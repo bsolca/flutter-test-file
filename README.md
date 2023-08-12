@@ -28,8 +28,6 @@ Using FTF is straightforward. Follow these steps:
     ```
 3. **Follow Instructions**: FTF will prompt you to enter the file name. Once you provide the file name and press enter, FTF will guide you through the process, ensuring the test file is created or moved to the appropriate location.
 
-With FTF, managing your Dart test files becomes a breeze. Save time and maintain a well-organized project structure with this convenient tool.
-
 # Contribution
 Contributions to FTF are welcome! If you find any issues or have ideas to improve the tool, please feel free to open an issue or submit a pull request on the GitHub repository. Your contributions help make FTF even better for the community.
 
