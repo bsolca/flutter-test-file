@@ -10,16 +10,18 @@ function ExitPrompted {
 
 # Gets the filename from the user and validates it.
 function Get-Filename {
-    $fileName = Read-Host "Enter the file name (my_file.dart)"
+    $fileName = Read-Host "Enter the file name (my_file or my_file.dart)"
 
     while ($fileName -eq "" -or $fileName.Contains(".") -eq $false) {
         if ($fileName -eq "") {
             Write-Host "File name cannot be empty"
         }
         elseif ($fileName.Contains(".") -eq $false) {
-            Write-Host "File name should contain a dot"
+            $fileName = "$fileName.dart"
         }
-        $fileName = Read-Host "Enter the file name to change"
+        else {
+            Get-Filename
+        }
     }
 
     return $fileName
@@ -92,17 +94,10 @@ function Read-MovingMethod($sourcePath, $destinationPath) {
     }
 
     $movedWithGit = Read-MoveWithGit $sourcePath $destinationPath
-    # oprint moved with git
-    Write-Host "Moved with git: $movedWithGit"
-    # if false move with svn
     if (-not $movedWithGit) {
         $movedWithSvn = Read-MoveWithSvn $sourcePath $destinationPath
-        # print moved with svn
-        Write-Host "Moved with svn: $movedWithSvn"
         # if false move with powershell
         if (-not $movedWithSvn) {
-            # print moved with powershell
-            Write-Host "Moved with powershell"
             Move-Item -Path $sourcePath -Destination $destinationPath -Force
         }
     }
@@ -181,7 +176,6 @@ function Read-ToMove($testFiles, $testFilePath) {
     Write-Host "Correct location: $testFilePath"
 
     Read-ToMoveTestFile $testFileExisting $testFilePath
-    ExitPrompted
 }
 
 function Main() {
