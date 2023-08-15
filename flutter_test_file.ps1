@@ -149,10 +149,40 @@ function Remove-EmptyDirectory($directoryPath) {
     while (-not $hasFiles -and $null -ne $directoryPath)
 }
 
+# Try add the file to git otherwise return false
+function Read-AddToGit($testFilePath) {
+    try {
+        git add $testFilePath 2>$null
+        if ($LASTEXITCODE -ne 0) {
+            return
+        }
+    }
+    catch {
+        return
+    }
+    return
+}
+
+# Try add the file to svn otherwise return false
+function Read-AddToSvn($testFilePath) {
+    try {
+        svn add --parents $testFilePath
+        if ($LASTEXITCODE -ne 0) {
+            return
+        }
+    }
+    catch {
+        return
+    }
+    return
+}
 
 # Function to create a new test file
 function New-TestFile($testFilePath, $testFileName) {
     New-Item -Path $testFilePath -ItemType File -Force
+    Read-AddToGit $testFilePath
+    Read-AddToSvn $testFilePath
+
     Write-Host "Test file created: $testFilePath"
 }
 
